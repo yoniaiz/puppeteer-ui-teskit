@@ -1,5 +1,23 @@
-import type { AxeTestResult } from '../../types';
+import type { AxeNode, AxeTestResult, AxeViolation } from '../../types';
 import { logger } from '../../utils/logger.js';
+
+const buildAxeErrorMessage = (
+  axeTestResult: AxeTestResult,
+  violation: AxeViolation,
+  node: AxeNode,
+) => {
+  const selector = node.target.join(', ');
+  return `
+    Expected the HTML found at $('${selector}') in ${axeTestResult.url} at ${axeTestResult.name} - ${axeTestResult.description} to have no violations:\n
+    ${node.html}\n
+    Received:\n
+    ${violation.help} (${violation.id})\n
+    Failure summary:\n
+    ${node.failureSummary}
+    You can find more information on this issue here: \n
+    ${violation.helpUrl}
+    `;
+};
 
 export const handleAxeTestsResults = (
   axeTestsResults: AxeTestResult[] = [],
@@ -29,19 +47,9 @@ export const handleAxeTestsResults = (
 
   for (const axeTestResult of axeTestsResultsWithErrors) {
     axeTestResult.violations.forEach((violation) =>
-      violation.nodes.map((node) => {
-        const selector = node.target.join(', ');
-        logger.error(`
-        Expected the HTML found at $('${selector}') in ${axeTestResult.url} at ${axeTestResult.name} - ${axeTestResult.description} to have no violations:\n
-        ${node.html}\n
-        Received:\n
-        ${violation.help} (${violation.id})\n
-        Failure summary:\n
-        ${node.failureSummary}
-        You can find more information on this issue here: \n
-        ${violation.helpUrl}
-        `);
-      }),
+      violation.nodes.map((node) =>
+        logger.error(buildAxeErrorMessage(axeTestResult, violation, node)),
+      ),
     );
   }
 
