@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getAllSnapFiles should find and return resolved files 1`] = `
+[
+  {
+    "name": "file1",
+    "path": "absolute/path/to/file1.js",
+    "tests": [
+      {
+        "description": "Test Axe Test",
+        "selector": "body",
+        "type": "axe",
+        "url": "http://localhost:3000/file1",
+      },
+      {
+        "description": "Test Visual Test",
+        "type": "visual",
+        "url": "http://localhost:3000/file1",
+      },
+    ],
+  },
+  {
+    "name": "file2",
+    "path": "absolute/path/to/file2.js",
+    "tests": [
+      {
+        "description": "Test Axe Test",
+        "selector": "body",
+        "type": "axe",
+        "url": "http://localhost:3000/file2",
+      },
+      {
+        "description": "Test Visual Test",
+        "type": "visual",
+        "url": "http://localhost:3000/file2",
+      },
+    ],
+  },
+]
+`;

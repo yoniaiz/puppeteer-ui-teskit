@@ -1,0 +1,70 @@
+import type { Page } from 'puppeteer';
+
+interface BrowserDriver {
+  $: Page['$'];
+  $$: Page['$$'];
+  $eval: Page['$eval'];
+  $$eval: Page['$$eval'];
+  click: Page['click'];
+  evaluate: Page['evaluate'];
+  evaluateHandle: Page['evaluateHandle'];
+  focus: Page['focus'];
+  hover: Page['hover'];
+  select: Page['select'];
+  setCookie: Page['setCookie'];
+  setExtraHTTPHeaders: Page['setExtraHTTPHeaders'];
+  setJavaScriptEnabled: Page['setJavaScriptEnabled'];
+  tap: Page['tap'];
+  waitForFunction: Page['waitForFunction'];
+  waitForNavigation: Page['waitForNavigation'];
+  waitForRequest: Page['waitForRequest'];
+  waitForResponse: Page['waitForResponse'];
+  waitForSelector: Page['waitForSelector'];
+  setCacheEnabled: Page['setCacheEnabled'];
+  setGeolocation: Page['setGeolocation'];
+  setUserAgent: Page['setUserAgent'];
+  touchscreen: Page['touchscreen'];
+}
+
+type TestLifeCycleFunction = (page: BrowserDriver) => Promise<void>;
+
+type TestBase = {
+  description: string;
+  beforeTest?: TestLifeCycleFunction;
+  afterTest?: TestLifeCycleFunction;
+  resetAfterTest?: boolean;
+};
+
+export type AxeTest = {
+  type: 'axe';
+  url?: string;
+  selector: string;
+  config?: {
+    disableRules?: string[];
+    exclude?: string[];
+  };
+} & TestBase;
+
+export type VisualTest = {
+  type: 'visual';
+  url?: string;
+  config?: {
+    threshold?: number;
+    screenWidth?: number;
+    screenHeight?: number;
+    x?: number;
+    y?: number;
+  };
+} & TestBase;
+
+export interface TestkitConfigFile {
+  url?: string;
+  name: string;
+  skip?: boolean;
+  tests: (AxeTest | VisualTest)[];
+}
+
+export interface ResolvedTestkitFile
+  extends Omit<TestkitConfigFile, 'skip' | 'url'> {
+  path: string;
+}

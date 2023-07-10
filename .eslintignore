@@ -2,3 +2,5 @@
 build
 sandbox
 node_modules
+*.cjs
+**/__mocks__/*

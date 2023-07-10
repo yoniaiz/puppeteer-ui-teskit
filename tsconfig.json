@@ -1,23 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es2022",
-    "module": "node16",
-    "lib": ["ES2022", "DOM"],
-    "moduleResolution": "node16",
-    "rootDir": ".",
+    "target": "ESNext",
+    "esModuleInterop": true,
     "outDir": "build",
-    "allowSyntheticDefaultImports": true,
-    "importHelpers": true,
-    "alwaysStrict": true,
-    "sourceMap": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitAny": false,
-    "noImplicitThis": false,
-    "strictNullChecks": false
+    "resolveJsonModule": true,
+    "module": "ESNext" /* Specify what module code is generated. */,
+    "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
+    "allowSyntheticDefaultImports": true
   },
+  "exclude": ["**/__mocks__/*"],
   "include": ["src/**/*", "__tests__/**/*"]
 }

@@ -1,3 +1,5 @@
+import { getAllTestkits } from './steps/getAllTestkits/getAllTestkits.js';
+
 export const run = async (): Promise<void> => {
-  console.log('Hello World');
+  await getAllTestkits();
 };
