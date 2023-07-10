@@ -37,7 +37,7 @@ export const handleAxeTest = async (
       name: snapshotFile.name,
       path: snapshotFile.path,
       url: snapTest.url,
-      violations: data.violations,
+      violations: data.violations as AxeTestResult['violations'],
     },
   };
 };

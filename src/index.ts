@@ -1,6 +1,19 @@
-import { getAllTestkitsStep, prepareTestsStep } from './steps/index.js';
+import {
+  getAllTestkitsStep,
+  handleAxeTestsResultsStep,
+  prepareTestsStep,
+} from './steps/index.js';
 
 export const run = async (): Promise<void> => {
   const testkits = await getAllTestkitsStep();
-  await prepareTestsStep(testkits);
+  const { failedAxeTestsCount, axeTestsResults } = await prepareTestsStep(
+    testkits,
+  );
+
+  const { axeTestsResultsWithErrorsCount } = handleAxeTestsResultsStep(
+    axeTestsResults,
+    failedAxeTestsCount,
+  );
+
+  console.log({ axeTestsResultsWithErrorsCount });
 };

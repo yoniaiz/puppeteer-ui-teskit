@@ -89,6 +89,10 @@ export type AxeTestResult = {
     id: string;
     impact?: unknown;
     tags: unknown[];
-    nodes: unknown[];
+    nodes: {
+      failureSummary: string;
+      html: string;
+      target: string[];
+    }[];
   }[];
 };
