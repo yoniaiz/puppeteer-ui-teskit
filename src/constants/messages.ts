@@ -66,18 +66,7 @@ const info = {
   removedUnusedSnapshot: (path: string): string =>
     `Removed unused snapshot: ${path}`,
 };
-const debug = {
-  takingScreenshot: (
-    name: string,
-    description: string,
-    urlToNavigate: string,
-  ): string => `Taking screenshot: ${name} - ${description} - ${urlToNavigate}`,
-  runningAxe: (
-    name: string,
-    description: string,
-    urlToNavigate: string,
-  ): string => `Running axe-core: ${name} - ${description} - ${urlToNavigate}`,
-};
+const debug = {};
 const success = {
   allSnapshotsPassed: (totalSnapshots: number): string =>
     `All ${totalSnapshots} snapshots passed`,

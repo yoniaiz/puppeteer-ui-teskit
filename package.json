@@ -54,10 +54,13 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "@axe-core/puppeteer": "^4.7.3",
     "ci-info": "^3.8.0",
     "commander": "^11.0.0",
     "consola": "^3.2.3",
+    "finalhandler": "^1.2.0",
     "glob": "^10.3.3",
-    "puppeteer": "^20.8.0"
+    "puppeteer": "^20.8.0",
+    "serve-static": "^1.15.0"
   }
 }

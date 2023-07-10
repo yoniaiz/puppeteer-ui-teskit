@@ -1,6 +1,6 @@
 import type { Page } from 'puppeteer';
 
-interface BrowserDriver {
+export interface BrowserDriver {
   $: Page['$'];
   $$: Page['$$'];
   $eval: Page['$eval'];
@@ -68,3 +68,27 @@ export interface ResolvedTestkitFile
   extends Omit<TestkitConfigFile, 'skip' | 'url'> {
   path: string;
 }
+
+export type Screenshot = {
+  name: string;
+  description: string;
+  snapshotBuffer: Buffer;
+  saveTo: string;
+  threshold?: number;
+};
+
+export type AxeTestResult = {
+  name: string;
+  description: string;
+  path: string;
+  url: string;
+  violations: {
+    description: string;
+    help: string;
+    helpUrl: string;
+    id: string;
+    impact?: unknown;
+    tags: unknown[];
+    nodes: unknown[];
+  }[];
+};

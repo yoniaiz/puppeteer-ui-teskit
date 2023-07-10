@@ -1,9 +1,9 @@
-import { messages } from '../../constants/messages';
+import { messages } from '../../constants/messages.js';
 import { TestkitConfigFile, ResolvedTestkitFile, AxeTest } from '../../types';
-import { program } from '../../utils/createProgram';
-import { logger } from '../../utils/logger';
-import { urlUtils } from '../../utils/url.utils';
-import { logs } from './constants';
+import { program } from '../../utils/createProgram.js';
+import { logger } from '../../utils/logger.js';
+import { urlUtils } from '../../utils/url.utils.js';
+import { logs } from './constants.js';
 
 function notValidTestkit(
   testkit: TestkitConfigFile,

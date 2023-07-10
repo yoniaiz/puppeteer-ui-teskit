@@ -1,5 +1,6 @@
-import { getAllTestkits } from './steps/getAllTestkits/getAllTestkits.js';
+import { getAllTestkitsStep, prepareTestsStep } from './steps/index.js';
 
 export const run = async (): Promise<void> => {
-  await getAllTestkits();
+  const testkits = await getAllTestkitsStep();
+  await prepareTestsStep(testkits);
 };

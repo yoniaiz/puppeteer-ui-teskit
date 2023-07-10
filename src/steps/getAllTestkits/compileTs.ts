@@ -1,5 +1,5 @@
 import tsc from 'typescript';
-import { getTempFolder } from './getTempFolder';
+import { getTempFolder } from './getTempFolder.js';
 
 export const compileTsSnapFiles = (filesPaths: string[]) => {
   const program = tsc.createProgram({
