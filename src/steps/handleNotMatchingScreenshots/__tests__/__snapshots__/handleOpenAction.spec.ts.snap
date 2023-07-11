@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`handleOpenAction should handle opening the diff image 1`] = `
+[MockFunction] {
+  "calls": [
+    [
+      {
+        "create": {
+          "background": {
+            "b": 0,
+            "g": 0,
+            "r": 0,
+          },
+          "channels": 3,
+          "height": 1124,
+          "width": 3340,
+        },
+      },
+    ],
+  ],
+  "results": [
+    {
+      "type": "return",
+      "value": {
+        "composite": [MockFunction] {
+          "calls": [
+            [
+              [
+                {
+                  "gravity": "northeast",
+                  "input": {
+                    "data": [
+                      110,
+                      101,
+                      119,
+                      32,
+                      115,
+                      110,
+                      97,
+                      112,
+                      115,
+                      104,
+                      111,
+                      116,
+                      32,
+                      105,
+                      109,
+                      97,
+                      103,
+                      101,
+                      32,
+                      100,
+                      97,
+                      116,
+                      97,
+                    ],
+                    "type": "Buffer",
+                  },
+                },
+                {
+                  "gravity": "north",
+                  "input": {
+                    "data": [
+                      100,
+                      105,
+                      102,
+                      102,
+                      32,
+                      105,
+                      109,
+                      97,
+                      103,
+                      101,
+                      32,
+                      100,
+                      97,
+                      116,
+                      97,
+                    ],
+                    "type": "Buffer",
+                  },
+                },
+                {
+                  "gravity": "northwest",
+                  "input": {
+                    "data": [
+                      111,
+                      108,
+                      100,
+                      32,
+                      115,
+                      110,
+                      97,
+                      112,
+                      115,
+                      104,
+                      111,
+                      116,
+                      32,
+                      105,
+                      109,
+                      97,
+                      103,
+                      101,
+                      32,
+                      100,
+                      97,
+                      116,
+                      97,
+                    ],
+                    "type": "Buffer",
+                  },
+                },
+                {
+                  "gravity": "south",
+                  "input": {
+                    "data": [
+                      100,
+                      105,
+                      102,
+                      102,
+                      32,
+                      105,
+                      109,
+                      97,
+                      103,
+                      101,
+                      32,
+                      100,
+                      97,
+                      116,
+                      97,
+                    ],
+                    "type": "Buffer",
+                  },
+                },
+              ],
+            ],
+          ],
+          "results": [
+            {
+              "type": "return",
+              "value": {
+                "png": [MockFunction] {
+                  "calls": [
+                    [],
+                  ],
+                  "results": [
+                    {
+                      "type": "return",
+                      "value": {
+                        "toBuffer": [MockFunction] {
+                          "calls": [
+                            [],
+                          ],
+                          "results": [
+                            {
+                              "type": "return",
+                              "value": {
+                                "data": [],
+                                "type": "Buffer",
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    },
+                  ],
+                },
+                "toBuffer": [MockFunction],
+              },
+            },
+          ],
+        },
+      },
+    },
+  ],
+}
+`;

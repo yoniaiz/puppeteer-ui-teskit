@@ -10,11 +10,16 @@ const defaultOptions: CliOptions = {
   port: 3000,
 };
 
-export const mockProgramOptions = (options: Partial<CliOptions>) => {
+export const mockProgramOptions = (
+  options: Partial<CliOptions>,
+  isCI = false,
+) => {
   program.options = {
     ...defaultOptions,
     ...options,
   };
+
+  program.isCI = isCI;
 };
 
 export const resetProgramOptions = () => {
