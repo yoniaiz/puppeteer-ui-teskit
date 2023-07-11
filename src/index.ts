@@ -4,6 +4,7 @@ import {
   handleAxeTestsResultsStep,
   prepareTestsStep,
 } from './steps/index.js';
+import { runScreenshotsWorkers } from './steps/screenshotsWorker/runScreenshotsWorkers.js';
 
 export const run = async (): Promise<void> => {
   const testkits = await getAllTestkitsStep();
@@ -17,6 +18,11 @@ export const run = async (): Promise<void> => {
 
   const unusedSnapshots = await getUnusedSnapshotsStep(screenshots);
 
+  const { failedScreenshotsCount, notMatchedScreenshots } =
+    await runScreenshotsWorkers(screenshots);
+
   console.log('unusedSnapshots', unusedSnapshots);
   console.log('axeTestsResultsWithErrorsCount', axeTestsResultsWithErrorsCount);
+  console.log('failedScreenshotsCount', failedScreenshotsCount);
+  console.log('notMatchedScreenshots', notMatchedScreenshots);
 };
