@@ -6,7 +6,7 @@ export interface CliOptions {
   remove?: boolean;
   headless?: boolean;
   port?: number;
-  statics: string;
+  statics?: string;
   folder?: string;
   file?: string;
   baseURL?: string;
@@ -22,16 +22,16 @@ const createProgram = (): {
   program
     .option('-u, --update', 'update snapshots')
     .option('-r, --remove', 'remove unused snapshots')
-    .option('--headless <boolean>', 'run in browser', true)
+    .option('--headless <boolean>', 'run browser headless mode', true)
     .option(
       '-p, --port <number>',
-      'port to run server on',
+      'port to run server on ( used when passed statics path to start server )',
       (val) => parseInt(val, 10),
-      3000,
+      3002,
     )
-    .requiredOption('--statics <string>', 'path to static files to serve')
+    .option('--statics <string>', 'path to static files to serve from server')
     .option('--folder <string>', 'folder contains ui-testkit config files', '.')
-    .option('--file <string>', 'file regex to run')
+    .option('--file <string>', 'file patten to run')
     .option('--baseURL <string>', 'base url to run against')
     .option(
       '--threshold <number>',
