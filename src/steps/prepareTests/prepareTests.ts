@@ -28,7 +28,7 @@ export async function prepareTests(testkits: ResolvedTestkitFile[]): Promise<{
     };
   }
 
-  logger.start(logs.startPreparingTests);
+  logger.start(logs.startPreparingTests(testkits.length));
 
   const browser = new BrowserLuncher();
   const server = new StaticsServer(
