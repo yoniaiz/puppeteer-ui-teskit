@@ -1,5 +1,6 @@
 
-  /** @type {import('../../types').UITeskitConfigFile} */
+  import {TestkitConfigFile} from  '../../build/types/Testkit.types'
+
   export default {
     name: "component11-ts",
     url: "http://localhost:3000/component11-ts.html",
@@ -25,4 +26,4 @@
         },
       }
     ]
-  };
+  } as TestkitConfigFile;

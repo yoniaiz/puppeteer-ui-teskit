@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "bin": "bin/index.js",
-  "types": "dist/index.d.ts",
+  "types": "build/types/Testkit.types.d.ts",
   "type": "module",
   "scripts": {
     "start": "node bin/index.js --statics sandbox/public",
@@ -13,7 +13,7 @@
     "prebuild": "npm run clean && npm run copy-assets",
     "build": "tsc -p tsconfig.json",
     "build:watch": "npm run copy-assets && tsc -w -p tsconfig.json",
-    "build:release": "npm run clean && tsc -p tsconfig.release.json",
+    "build:release": "npm run clean && npm run copy-assets && tsc -p tsconfig.release.json",
     "lint": "eslint . --ext .ts --ext .mts",
     "prettier": "prettier --config .prettierrc --write .",
     "precommit": "npm run prettier && npm run lint",
