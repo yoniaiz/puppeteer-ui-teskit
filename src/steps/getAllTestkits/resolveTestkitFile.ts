@@ -1,4 +1,3 @@
-import { messages } from '../../constants/messages.js';
 import { TestkitConfigFile, ResolvedTestkitFile, AxeTest } from '../../types';
 import { program } from '../../utils/createProgram.js';
 import { logger } from '../../utils/logger.js';
@@ -32,7 +31,7 @@ function notValidTestkit(
   const { tests } = testkit;
 
   if (!tests || !tests.length) {
-    logger.error(messages.error.testkitFileMissingTests(filePath));
+    logger.error(logs.testkitFileMissingTests(filePath));
     return true;
   }
 
@@ -40,19 +39,13 @@ function notValidTestkit(
 
   for (const _test of tests) {
     if (!_test.description) {
-      logger.error(
-        messages.error.testkitTestMissingDescription(filePath, _test.type),
-      );
+      logger.error(logs.testkitTestMissingDescription(filePath, _test.type));
       return true;
     }
 
     if (!inMainURL && !_test.url) {
       logger.error(
-        messages.error.testkitTestMissingURL(
-          filePath,
-          _test.type,
-          _test.description,
-        ),
+        logs.testkitTestMissingURL(filePath, _test.type, _test.description),
       );
       return true;
     }
@@ -62,7 +55,7 @@ function notValidTestkit(
       !urlUtils.isValidUrl(baseURL ? `${baseURL}/${_test.url}` : _test.url)
     ) {
       logger.error(
-        messages.error.testkitTestInvalidURL(
+        logs.testkitTestInvalidURL(
           filePath,
           _test.type,
           _test.description,
@@ -76,9 +69,11 @@ function notValidTestkit(
   for (const axeTest of axeTests) {
     if (!axeTest.selector) {
       logger.error(
-        messages.error.testkitAxeTestMissingSelector(
+        logs.testkitAxeTestMissingSelector(
           filePath,
+          axeTest.type,
           axeTest.description,
+          axeTest.url,
         ),
       );
       return true;
@@ -93,7 +88,7 @@ export async function resolveTestkitFile(
   filePath: string,
 ) {
   if (testkit?.skip) {
-    logger.info(messages.info.testkitFileSkipped(filePath));
+    logger.info(logs.testkitFileSkipped(filePath));
     return null;
   }
 

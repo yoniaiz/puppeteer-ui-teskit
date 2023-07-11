@@ -2,7 +2,7 @@ import serveStatic from 'serve-static';
 import finalhandler from 'finalhandler';
 import http from 'http';
 import { logger } from '../../../utils/logger.js';
-import { messages } from '../../../constants/messages.js';
+import { logs } from './constants.js';
 
 export class StaticsServer {
   server: http.Server = null;
@@ -31,7 +31,7 @@ export class StaticsServer {
 
     server.listen(this.port);
 
-    logger.info(messages.info.serveStatics(this.statics, this.port));
+    logger.info(logs.serveStatics(this.statics, this.port));
 
     this.server = server;
   }
@@ -42,6 +42,6 @@ export class StaticsServer {
     this.server.close();
     this.server = null;
 
-    logger.info(messages.info.closeStatics(this.port));
+    logger.info(logs.closeStatics(this.port));
   }
 }

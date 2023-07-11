@@ -2,8 +2,8 @@ import puppeteer, { Browser, Page, ScreenshotOptions } from 'puppeteer';
 import { AxePuppeteer } from '@axe-core/puppeteer';
 import { program } from '../../../utils/createProgram.js';
 import { logger } from '../../../utils/logger.js';
-import { messages } from '../../../constants/messages.js';
 import type { AxeTest, VisualTest, BrowserDriver } from '../../../types';
+import { logs } from './constants.js';
 
 export class BrowserLuncher {
   private browser: Browser | undefined;
@@ -41,7 +41,7 @@ export class BrowserLuncher {
     const page = await this.browser.newPage();
 
     this.page = page;
-    logger.info(messages.info.lunchingBrowser);
+    logger.info(logs.lunchingBrowser);
   }
 
   async navigateToPage(url: string) {
@@ -64,7 +64,7 @@ export class BrowserLuncher {
     this.page = undefined;
     this.currentUrl = undefined;
 
-    logger.info(messages.info.closingBrowser);
+    logger.info(logs.closingBrowser);
   }
 
   async takeScreenshot({

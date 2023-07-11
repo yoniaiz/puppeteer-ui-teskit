@@ -1,6 +1,6 @@
 import type { AxeNode, AxeTestResult, AxeViolation } from '../../types';
 import { logger } from '../../utils/logger.js';
-import { logs } from './constants';
+import { logs } from './constants.js';
 
 const buildAxeErrorMessage = (
   axeTestResult: AxeTestResult,
