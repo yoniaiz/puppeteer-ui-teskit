@@ -26,12 +26,6 @@
   "volta": {
     "node": "20.3.0"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://"
-    }
-  ],
   "keywords": [],
   "author": "Yonatan Aizenshtein <https://github.com/yoniaiz>",
   "devDependencies": {
