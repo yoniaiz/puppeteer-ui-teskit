@@ -7,6 +7,7 @@ import type {
   Screenshot,
   ScreenshotSaveResult,
 } from '../../types';
+import { logs } from './constants.js';
 
 const piscina = new Piscina({
   // The URL must be a file:// URL
@@ -19,7 +20,7 @@ export async function runScreenshotsWorkers(
   notMatchedScreenshots: FailedSnapshot[];
   failedScreenshotsCount: number;
 }> {
-  logger.start('Comparing screenshots');
+  logger.start(logs.startScreenshotsWorkers(screenshots.length));
 
   const promises = screenshots.map((screenshot) => {
     return piscina.run({
@@ -32,7 +33,7 @@ export async function runScreenshotsWorkers(
 
   const results: ScreenshotSaveResult[] = await Promise.all(promises);
 
-  logger.success('Finished comparing screenshots');
+  logger.success(logs.finishedScreenshotsWorkers);
 
   results.forEach((result) => {
     if (result.message) {

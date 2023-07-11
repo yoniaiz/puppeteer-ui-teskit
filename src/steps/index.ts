@@ -4,3 +4,4 @@ export { handleAxeTestsResults as handleAxeTestsResultsStep } from './handleAxeT
 export { getUnusedSnapshots as getUnusedSnapshotsStep } from './getUnusedSnapshots/getUnusedSnapshots.js';
 export { runScreenshotsWorkers as runScreenshotsWorkersStep } from './screenshotsWorker/runScreenshotsWorkers.js';
 export { handleNotMatchingScreenshots as handleNotMatchingScreenshotsStep } from './handleNotMatchingScreenshots/handleNotMatchingScreenshots.js';
+export { handleOutput as handleOutputStep } from './handleOutput/handleOutput.js';
