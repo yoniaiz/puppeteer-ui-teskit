@@ -5,4 +5,6 @@ export const logger = {
   warn: jest.fn(),
   success: jest.fn(),
   log: jest.fn(),
+  box: jest.fn(),
+  start: jest.fn(),
 };

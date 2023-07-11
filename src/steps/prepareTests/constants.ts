@@ -1,4 +1,6 @@
 export const logs = {
+  startPreparingTests: (testkitsLength: number) =>
+    `Preparing tests for ${testkitsLength} testkits`,
   takingScreenshot: (
     name: string,
     description: string,

@@ -57,7 +57,7 @@ describe('findAllSnapFiles', () => {
       './**/*{.ui-testkit.js,.ui-testkit.ts}',
     );
     expect(result).toEqual([]);
-    expect(logger.warn).toBeCalledTimes(1);
-    expect(logger.warn).toBeCalledWith(logs.noTestkitsFound);
+    expect(logger.warn).toHaveBeenCalledTimes(1);
+    expect(logger.warn).toHaveBeenCalledWith(logs.noTestkitsFound);
   });
 });

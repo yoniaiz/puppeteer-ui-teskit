@@ -10,6 +10,8 @@ import { StaticsServer } from './StaticsServer/StaticsServer.js';
 import { program } from '../../utils/createProgram.js';
 import { handleVisualTest } from './handleVisualTest.js';
 import { handleAxeTest } from './handleAxeTest.js';
+import { logger } from '../../utils/logger.js';
+import { logs } from './constants.js';
 
 export async function prepareTests(testkits: ResolvedTestkitFile[]): Promise<{
   screenshots: Screenshot[];
@@ -25,6 +27,8 @@ export async function prepareTests(testkits: ResolvedTestkitFile[]): Promise<{
       failedAxeTestsCount: 0,
     };
   }
+
+  logger.start(logs.startPreparingTests);
 
   const browser = new BrowserLuncher();
   const server = new StaticsServer(

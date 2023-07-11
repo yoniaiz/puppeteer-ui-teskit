@@ -1,5 +1,5 @@
 export const logs = {
-  gettingTestkits: 'Getting testkits...',
+  startGettingTestkits: 'Getting testkits',
   noTestkitsFound: 'No testkits found',
   notSupportedFileType: (filePath: string): string =>
     `File type not supported: ${filePath}`,

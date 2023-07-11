@@ -1,6 +1,10 @@
 import type { AxeNode, AxeTestResult, AxeViolation } from '../../types';
 import { logger } from '../../utils/logger.js';
 
+const logs = {
+  startHandlingAxeTestsResults: `Checking for accessibility issues`,
+};
+
 const buildAxeErrorMessage = (
   axeTestResult: AxeTestResult,
   violation: AxeViolation,
@@ -23,6 +27,8 @@ export const handleAxeTestsResults = (
   axeTestsResults: AxeTestResult[] = [],
   failedAxeTestsCount = 0,
 ) => {
+  logger.start(logs.startHandlingAxeTestsResults);
+
   if (axeTestsResults.length === 0) {
     return {
       axeTestsResultsWithErrorsCount: failedAxeTestsCount,

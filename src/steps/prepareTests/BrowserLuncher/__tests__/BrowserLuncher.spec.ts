@@ -37,9 +37,11 @@ describe('BrowserLuncher', () => {
   it('should throw error if page is not defined on navigateToPage', async () => {
     await browserLuncher.lunchBrowser();
     await browserLuncher.closeBrowser();
+
     try {
       await browserLuncher.navigateToPage('https://google.com');
     } catch (e) {
+      // eslint-disable-next-line jest/no-conditional-expect
       expect(e.message).toBe('Page is not defined, please lunch browser first');
     }
   });
@@ -50,6 +52,7 @@ describe('BrowserLuncher', () => {
     try {
       await browserLuncher.takeScreenshot();
     } catch (e) {
+      // eslint-disable-next-line jest/no-conditional-expect
       expect(e.message).toBe('Page is not defined, please lunch browser first');
     }
   });

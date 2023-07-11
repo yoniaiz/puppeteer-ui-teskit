@@ -55,7 +55,7 @@ describe('getAllSnapFiles', () => {
 
     const result = await getAllTestkits();
 
-    expect(logger.info).toBeCalledWith(logs.gettingTestkits);
+    expect(logger.start).toHaveBeenCalledWith(logs.startGettingTestkits);
     expect(glob.sync).toHaveBeenCalledWith(
       './**/*{.ui-testkit.js,.ui-testkit.ts}',
     );

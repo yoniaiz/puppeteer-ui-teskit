@@ -4,6 +4,6 @@ import { getAllTestkitFiles } from './getAllTestkitFiles.js';
 import { resolveAllTeskitFiles } from './resolveAllTeskitFiles.js';
 
 export function getAllTestkits() {
-  logger.info(logs.gettingTestkits);
+  logger.start(logs.startGettingTestkits);
   return resolveAllTeskitFiles(getAllTestkitFiles());
 }
