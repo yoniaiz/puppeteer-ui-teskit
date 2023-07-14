@@ -1,7 +1,10 @@
 import { glob } from 'glob';
 import { run } from '../index';
 import { logger } from '../utils/logger';
-import { logs as handleOutputLogs } from '../steps/handleOutput/constants';
+import {
+  OUTPUT_CI_ERROR_MESSAGE,
+  logs as handleOutputLogs,
+} from '../steps/handleOutput/constants';
 import { testUtils } from '../test/utils';
 import { ScreenshotSaveResult } from '../types';
 import prompts from 'prompts';
@@ -129,9 +132,7 @@ describe('Mismatches integration', () => {
       await run();
     } catch (e) {
       // eslint-disable-next-line jest/no-conditional-expect
-      expect(e).toEqual(
-        new Error('Failed tests found. See logs above for details.'),
-      );
+      expect(e).toEqual(new Error(OUTPUT_CI_ERROR_MESSAGE));
     }
 
     expect(saveFilesMock).toHaveBeenCalledTimes(testkitConfigs.length);

@@ -1,24 +1,7 @@
-import type { AxeNode, AxeTestResult, AxeViolation } from '../../types';
+import type { AxeTestResult } from '../../types';
 import { logger } from '../../utils/logger.js';
+import { buildAxeErrorMessage } from './buildAxeErrorMessage';
 import { logs } from './constants.js';
-
-const buildAxeErrorMessage = (
-  axeTestResult: AxeTestResult,
-  violation: AxeViolation,
-  node: AxeNode,
-) => {
-  const selector = node.target.join(', ');
-  return `
-    Expected the HTML found at $('${selector}') in ${axeTestResult.url} at ${axeTestResult.name} - ${axeTestResult.description} to have no violations:\n
-    ${node.html}\n
-    Received:\n
-    ${violation.help} (${violation.id})\n
-    Failure summary:\n
-    ${node.failureSummary}
-    You can find more information on this issue here: \n
-    ${violation.helpUrl}
-    `;
-};
 
 export const handleAxeTestsResults = (
   axeTestsResults: AxeTestResult[] = [],

@@ -1,6 +1,6 @@
 import { program } from '../../utils/createProgram.js';
 import { logger } from '../../utils/logger.js';
-import { logs } from './constants.js';
+import { OUTPUT_CI_ERROR_MESSAGE, logs } from './constants.js';
 
 interface OutputParams {
   notMatchedScreenshotsCount: number;
@@ -74,6 +74,6 @@ export const handleOutput = ({
   );
 
   if (program.isCI) {
-    throw new Error('Failed tests found. See logs above for details.');
+    throw new Error(OUTPUT_CI_ERROR_MESSAGE);
   }
 };

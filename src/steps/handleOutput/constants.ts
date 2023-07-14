@@ -38,3 +38,6 @@ export const logs = {
       axeTestsResultsWithErrorsCount
     }/${totalTests}`,
 };
+
+export const OUTPUT_CI_ERROR_MESSAGE =
+  'Failed tests found. See logs above for details.';
