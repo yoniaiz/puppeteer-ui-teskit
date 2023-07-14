@@ -16,9 +16,12 @@
     "build:release": "npm run clean && npm run copy-assets && tsc -p tsconfig.release.json",
     "lint": "eslint . --ext .ts --ext .mts",
     "prettier": "prettier --config .prettierrc --write .",
+    "prettier:check": "prettier --config .prettierrc --check .",
     "precommit": "npm run prettier && npm run lint",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:e2e": "npm run start",
+    "test:watch": "jest --watch",
+    "test:all": "npm run test && npm run test:e2e"
   },
   "engines": {
     "node": ">=16.0.0"
