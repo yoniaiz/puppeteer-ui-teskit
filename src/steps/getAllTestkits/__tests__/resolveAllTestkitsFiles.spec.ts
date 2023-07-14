@@ -1,11 +1,12 @@
 import { createProgram } from 'typescript';
 import { resolveAllTeskitFiles } from '../resolveAllTeskitFiles';
-import { TestkitConfigFile } from '../../../types';
 import { pathMocks } from '../../../test/pathMocks';
 import { logger } from '../../../utils/logger';
 import { logs } from '../constants';
 import { fsMocks } from '../../../test/fsMocks';
 import { getTempFolder } from '../getTempFolder';
+import { testUtils } from '../../../test/utils';
+import { resolveTestkitFile } from '../resolveTestkitFile';
 
 jest.mock('typescript', () => ({
   createProgram: jest.fn(() => ({
@@ -28,66 +29,16 @@ describe('resolveFiles', () => {
   });
 
   it('should resolve JS snap files', async () => {
-    const filePaths = ['path/to/file1.js', 'path/to/file2.js'];
-
-    const mockSnapFile: TestkitConfigFile = {
-      name: 'Test Snap File',
-      url: 'http://example.com',
-      tests: [
-        {
-          type: 'axe',
-          description: 'Test Axe Test',
-          selector: 'body',
-        },
-        {
-          type: 'visual',
-          description: 'Test Visual Test',
-        },
-      ],
-    };
-    jest.mock('path/to/file1.js', () => mockSnapFile, { virtual: true });
-    jest.mock('path/to/file2.js', () => mockSnapFile, { virtual: true });
+    const { paths, testkitConfigs } =
+      testUtils.generateMockTestkitConfigFile(2);
 
     pathMocks.extname('.js');
 
-    const result = await resolveAllTeskitFiles(filePaths);
+    const result = await resolveAllTeskitFiles(paths);
 
-    expect(result).toEqual([
-      {
-        name: 'Test Snap File',
-        path: 'path/to/file1.js',
-        tests: [
-          {
-            type: 'axe',
-            description: 'Test Axe Test',
-            selector: 'body',
-            url: 'http://example.com',
-          },
-          {
-            type: 'visual',
-            description: 'Test Visual Test',
-            url: 'http://example.com',
-          },
-        ],
-      },
-      {
-        name: 'Test Snap File',
-        path: 'path/to/file2.js',
-        tests: [
-          {
-            type: 'axe',
-            description: 'Test Axe Test',
-            selector: 'body',
-            url: 'http://example.com',
-          },
-          {
-            type: 'visual',
-            description: 'Test Visual Test',
-            url: 'http://example.com',
-          },
-        ],
-      },
-    ]);
+    expect(result).toEqual(
+      testkitConfigs.map((testkit, i) => resolveTestkitFile(testkit, paths[i])),
+    );
 
     expect(logger.error).not.toHaveBeenCalled();
   });
@@ -110,30 +61,13 @@ describe('resolveFiles', () => {
   });
 
   it('should skip snapFile', async () => {
-    const filePaths = ['path/to/file3.js', 'path/to/file4.js'];
-
-    const mockSnapFile: TestkitConfigFile = {
-      name: 'Test Snap File',
-      url: 'http://example.com',
+    const { paths } = testUtils.generateMockTestkitConfigFile(2, {
       skip: true,
-      tests: [
-        {
-          type: 'axe',
-          description: 'Test Axe Test',
-          selector: 'body',
-        },
-        {
-          type: 'visual',
-          description: 'Test Visual Test',
-        },
-      ],
-    };
-    jest.mock('path/to/file3.js', () => mockSnapFile, { virtual: true });
-    jest.mock('path/to/file4.js', () => mockSnapFile, { virtual: true });
+    });
 
     pathMocks.extname('.js');
 
-    const result = await resolveAllTeskitFiles(filePaths);
+    const result = await resolveAllTeskitFiles(paths);
 
     expect(result).toEqual([]);
 
@@ -141,31 +75,13 @@ describe('resolveFiles', () => {
   });
 
   it('should resolve ts snap files', async () => {
-    const filePaths = ['path/to/file1.ts', 'path/to/file2.ts'];
-
-    const mockSnapFile: TestkitConfigFile = {
-      name: 'Test Snap File',
-      url: 'http://example.com',
-      tests: [
-        {
-          type: 'axe',
-          description: 'Test Axe Test',
-          selector: 'body',
-        },
-        {
-          type: 'visual',
-          description: 'Test Visual Test',
-        },
-      ],
-    };
-
-    const folderPath = getTempFolder().replace('__tests__', '');
-    jest.doMock(`${folderPath}/file1.js`, () => mockSnapFile, {
-      virtual: true,
-    });
-    jest.doMock(`${folderPath}/file2.js`, () => mockSnapFile, {
-      virtual: true,
-    });
+    const folder = getTempFolder().replace('__tests__', '');
+    const { paths: filePaths, testkitConfigs } =
+      testUtils.generateMockTestkitConfigFile(2, {
+        ts: true,
+        folder,
+        startCountFrom: 4,
+      });
 
     pathMocks.extname('.ts');
     fsMocks.promises.unlink();
@@ -176,47 +92,16 @@ describe('resolveFiles', () => {
     expect(createProgram).toHaveBeenNthCalledWith(1, {
       options: {
         module: 'esnext',
-        outDir: folderPath,
+        outDir: folder,
       },
-      rootNames: ['path/to/file1.ts', 'path/to/file2.ts'],
+      rootNames: filePaths,
     });
 
-    expect(result).toEqual([
-      {
-        name: 'Test Snap File',
-        path: 'path/to/file1.ts',
-        tests: [
-          {
-            type: 'axe',
-            description: 'Test Axe Test',
-            selector: 'body',
-            url: 'http://example.com',
-          },
-          {
-            type: 'visual',
-            description: 'Test Visual Test',
-            url: 'http://example.com',
-          },
-        ],
-      },
-      {
-        name: 'Test Snap File',
-        path: 'path/to/file2.ts',
-        tests: [
-          {
-            type: 'axe',
-            description: 'Test Axe Test',
-            selector: 'body',
-            url: 'http://example.com',
-          },
-          {
-            type: 'visual',
-            description: 'Test Visual Test',
-            url: 'http://example.com',
-          },
-        ],
-      },
-    ]);
+    expect(result).toEqual(
+      testkitConfigs.map((testkit, i) =>
+        resolveTestkitFile(testkit, filePaths[i]),
+      ),
+    );
 
     expect(logger.error).not.toHaveBeenCalled();
   });

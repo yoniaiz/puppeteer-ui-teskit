@@ -83,7 +83,7 @@ function notValidTestkit(
   return false;
 }
 
-export async function resolveTestkitFile(
+export function resolveTestkitFile(
   testkit: TestkitConfigFile,
   filePath: string,
 ) {

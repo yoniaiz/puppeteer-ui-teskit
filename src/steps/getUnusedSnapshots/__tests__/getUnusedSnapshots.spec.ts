@@ -10,32 +10,12 @@ import {
   resetProgramOptions,
 } from '../../../test/mockProgramOptions';
 import { logs } from '../constants';
-import {
-  TESTKIT_FILE_NAME,
-  TESTKIT_FOLDER_NAME,
-} from '../../../constants/testkit.constants';
-
-const generateMockPaths = (count: number): string[] => {
-  return Array.from(
-    { length: count },
-    (_, index) =>
-      `path/to/${TESTKIT_FOLDER_NAME}/file${index}-description.${TESTKIT_FILE_NAME}.png`,
-  );
-};
-
-const generateMockScreenshots = (count: number): Screenshot[] => {
-  return Array.from({ length: count }, (_, index) => ({
-    saveTo: `absolute/path/to/file${index}.${TESTKIT_FILE_NAME}.ts`,
-    name: `file${index}`,
-    description: 'description',
-    snapshotBuffer: Buffer.from(''),
-  }));
-};
+import { testUtils } from '../../../test/utils';
 
 describe('getUnusedSnapshots', () => {
   it('Should get unused snapshots', async () => {
-    const mockFilePaths = generateMockPaths(3);
-    const newScreenshots: Screenshot[] = generateMockScreenshots(2);
+    const mockFilePaths = testUtils.generateSnapshotsPaths(3);
+    const newScreenshots: Screenshot[] = testUtils.generateMockScreenshots(2);
 
     jest.spyOn(glob, 'sync').mockReturnValueOnce(mockFilePaths);
     pathMocks.resolve();
@@ -46,8 +26,8 @@ describe('getUnusedSnapshots', () => {
   });
 
   it('Should return empty array if no unused snapshots', async () => {
-    const mockFilePaths = generateMockPaths(2);
-    const newScreenshots: Screenshot[] = generateMockScreenshots(2);
+    const mockFilePaths = testUtils.generateSnapshotsPaths(2);
+    const newScreenshots: Screenshot[] = testUtils.generateMockScreenshots(2);
 
     jest.spyOn(glob, 'sync').mockReturnValueOnce(mockFilePaths);
     pathMocks.resolve();
@@ -62,7 +42,7 @@ describe('getUnusedSnapshots', () => {
       file: 'file1',
     });
 
-    const newScreenshots: Screenshot[] = generateMockScreenshots(2);
+    const newScreenshots: Screenshot[] = testUtils.generateMockScreenshots(2);
 
     const unusedSnapshots = await getUnusedSnapshots(newScreenshots);
 
@@ -76,8 +56,8 @@ describe('getUnusedSnapshots', () => {
       update: true,
     });
 
-    const mockFilePaths = generateMockPaths(3);
-    const newScreenshots: Screenshot[] = generateMockScreenshots(1);
+    const mockFilePaths = testUtils.generateSnapshotsPaths(3);
+    const newScreenshots: Screenshot[] = testUtils.generateMockScreenshots(1);
 
     jest.spyOn(glob, 'sync').mockReturnValue(mockFilePaths);
     pathMocks.resolve();
