@@ -24,4 +24,5 @@ export const mockProgramOptions = (
 
 export const resetProgramOptions = () => {
   program.options = defaultOptions;
+  program.isCI = false;
 };
