@@ -107,6 +107,7 @@ The tests will be executed based on the provided configuration, and the results 
   - Option 2: Show the diff between the saved snapshot and the newly captured snapshot, allowing you to choose to update or skip the screenshot.
   - Option 3: Skip updating the screenshot.
 
+![](https://github.com/yoniaiz/puppeteer-ui-teskit/blob/main/usage.gif)
 - In the CI environment, any visual test mismatches will cause the tests to fail, ensuring that any changes to the UI are properly reviewed.
 
 These steps will enable you to define, execute, and manage your UI tests using Puppeteer UI TestKit, including visual regression tests with snapshot comparisons.
