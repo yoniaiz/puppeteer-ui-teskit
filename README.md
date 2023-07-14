@@ -115,7 +115,7 @@ These steps will enable you to define, execute, and manage your UI tests using P
 ## Configuration file options
 
 | Option | Description |
-| ------ | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ------ | ----------- | 
 | url    |             | (string, optional): The URL of the page to test. If specified, Puppeteer will navigate to this URL before running the tests. This allows you to test specific web pages or web applications. |
 | name   |             | (string): The name of the test configuration. It helps identify and distinguish different test configurations.                                                                               |
 | skip   |             | (boolean, optional): Specifies whether to skip running the tests in this configuration. If set to true, the tests will be skipped when executed.                                             |
@@ -126,7 +126,7 @@ The tests array includes two types of tests: AxeTest for accessibility testing a
 ### AxeTest Configuration Options
 
 | Option              | Description |
-| ------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ------------------- | ----------- | 
 | type                |             | (string): The type of the test, which should be set to 'axe' for accessibility testing.                                                                                                       |
 | description         |             | (string): The description of the test. It provides a brief explanation of what the test is checking.                                                                                          |
 | selector            |             | (string): The selector of the element on which to run axe-core for accessibility testing. It allows you to focus the accessibility checks on specific elements or areas of the page.          |
@@ -137,7 +137,7 @@ The tests array includes two types of tests: AxeTest for accessibility testing a
 ### VisualTest Configuration Options
 
 | Option              | Description |
-| ------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ------------------- | ----------- |
 | type                |             | (string): The type of the test, which should be set to 'visual' for visual regression testing                                                                                        |
 | description         |             | (string): The description of the test. It provides a brief explanation of what the test is checking.                                                                                 |
 | config              |             | (object, optional): Additional configuration options for screenshot capture and comparison                                                                                           |
@@ -156,7 +156,7 @@ By utilizing these configuration options, you can create comprehensive test suit
 Puppeteer UI TestKit provides several command-line interface (CLI) options to customize the test execution. Here's an explanation of each CLI option:
 
 | Flag             | Description |
-| ---------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ---------------- | ----------- | 
 | `-u`, `--update` |             | This option allows you to update the saved snapshots with newly captured screenshots. When this option is specified, Puppeteer UI TestKit will update the snapshots instead of performing a comparison.                                                         |
 | `-r`,`--remove`  |             | With this option, you can remove any unused snapshots. Unused snapshots refer to the ones that are no longer associated with any tests in the test configuration file.                                                                                          |
 | `--headless`     |             | (boolean): This option specifies whether to run the browser in headless mode. By default, it is set to `true`, meaning the browser will run in headless mode. You can set it to `false` if you want to run the browser with a visible UI.                       |
