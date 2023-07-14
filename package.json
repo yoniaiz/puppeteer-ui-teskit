@@ -7,7 +7,7 @@
   "types": "build/types/Testkit.types.d.ts",
   "type": "module",
   "scripts": {
-    "start": "node bin/index.js --statics sandbox/public",
+    "start": "node bin/index.js --statics sandbox/public --port 3000",
     "clean": "rimraf build tmp",
     "copy-assets": "copyfiles -u 1 \"src/assets/**/*\" build",
     "prebuild": "npm run clean && npm run copy-assets",
