@@ -112,59 +112,59 @@ The tests will be executed based on the provided configuration, and the results 
 
 These steps will enable you to define, execute, and manage your UI tests using Puppeteer UI TestKit, including visual regression tests with snapshot comparisons.
 
+
 ## Configuration file options
 
 | Option | Description |
-| ------ | ----------- | 
-| url    |             | (string, optional): The URL of the page to test. If specified, Puppeteer will navigate to this URL before running the tests. This allows you to test specific web pages or web applications. |
-| name   |             | (string): The name of the test configuration. It helps identify and distinguish different test configurations.                                                                               |
-| skip   |             | (boolean, optional): Specifies whether to skip running the tests in this configuration. If set to true, the tests will be skipped when executed.                                             |
-| tests  |             | (array of objects): An array of individual test objects. Each test object represents a specific test to be performed.                                                                        |
+| ------ | ------ |
+|url||(string, optional): The URL of the page to test. If specified, Puppeteer will navigate to this URL before running the tests. This allows you to test specific web pages or web applications.|
+|name||(string): The name of the test configuration. It helps identify and distinguish different test configurations.|
+|skip|| (boolean, optional): Specifies whether to skip running the tests in this configuration. If set to true, the tests will be skipped when executed.|
+|tests||(array of objects): An array of individual test objects. Each test object represents a specific test to be performed.|
 
 The tests array includes two types of tests: AxeTest for accessibility testing and VisualTest for visual regression testing. Here's an explanation of the options for each test type:
 
-### AxeTest Configuration Options
+### AxeTest Configuration Options 
+| Option | Description |
+| ------ | ------ |
+|type||(string): The type of the test, which should be set to 'axe' for accessibility testing.|
+|description||(string): The description of the test. It provides a brief explanation of what the test is checking.|
+|selector||(string): The selector of the element on which to run axe-core for accessibility testing. It allows you to focus the accessibility checks on specific elements or areas of the page.|
+|config||(object, optional): Additional configuration options for axe-core.|
+| config/disableRules || (array of strings): An array of rule IDs to disable during accessibility testing. You can specify specific rule IDs that you want to skip.|
+|config/exclude||(array of strings): An array of CSS selectors representing elements to exclude from accessibility testing. Elements matching these selectors will be ignored during the accessibility checks.|
 
-| Option              | Description |
-| ------------------- | ----------- | 
-| type                |             | (string): The type of the test, which should be set to 'axe' for accessibility testing.                                                                                                       |
-| description         |             | (string): The description of the test. It provides a brief explanation of what the test is checking.                                                                                          |
-| selector            |             | (string): The selector of the element on which to run axe-core for accessibility testing. It allows you to focus the accessibility checks on specific elements or areas of the page.          |
-| config              |             | (object, optional): Additional configuration options for axe-core.                                                                                                                            |
-| config/disableRules |             | (array of strings): An array of rule IDs to disable during accessibility testing. You can specify specific rule IDs that you want to skip.                                                    |
-| config/exclude      |             | (array of strings): An array of CSS selectors representing elements to exclude from accessibility testing. Elements matching these selectors will be ignored during the accessibility checks. |
-
-### VisualTest Configuration Options
-
-| Option              | Description |
-| ------------------- | ----------- |
-| type                |             | (string): The type of the test, which should be set to 'visual' for visual regression testing                                                                                        |
-| description         |             | (string): The description of the test. It provides a brief explanation of what the test is checking.                                                                                 |
-| config              |             | (object, optional): Additional configuration options for screenshot capture and comparison                                                                                           |
-| config/threshold    |             | (number): The threshold for visual difference comparison. It represents the maximum allowed difference between two screenshots. Smaller values indicate stricter comparison criteria |
-| config/screenWidth  |             | (number): The width of the screenshot to capture. By default, it captures the full page width.                                                                                       |
-| config/screenHeight |             | (number): The height of the screenshot to capture. By default, it captures the full page height                                                                                      |
-| config/x            |             | (number): The x-coordinate of the screenshot area to capture. It allows you to specify a specific region of the page.                                                                |
-| config/y            |             | (number): The y-coordinate of the screenshot area to capture. It allows you to specify a specific region of the page.                                                                |
+### VisualTest Configuration Options 
+| Option | Description |
+| ------ | ------ |
+|type||(string): The type of the test, which should be set to 'visual' for visual regression testing|
+|description||(string): The description of the test. It provides a brief explanation of what the test is checking.|
+|config|| (object, optional): Additional configuration options for screenshot capture and comparison|
+| config/threshold || (number): The threshold for visual difference comparison. It represents the maximum allowed difference between two screenshots. Smaller values indicate stricter comparison criteria|
+|config/screenWidth||(number): The width of the screenshot to capture. By default, it captures the full page width.|
+|config/screenHeight|| (number): The height of the screenshot to capture. By default, it captures the full page height|
+|config/x||(number): The x-coordinate of the screenshot area to capture. It allows you to specify a specific region of the page.|
+|config/y||(number): The y-coordinate of the screenshot area to capture. It allows you to specify a specific region of the page.|
 
 The configuration file allows you to define multiple tests by adding additional test objects to the tests array. Each test can be customized based on its type (AxeTest or VisualTest) and the specific options provided.
 
 By utilizing these configuration options, you can create comprehensive test suites that cover both accessibility and visual regression aspects of your web application, enabling you to identify and address potential issues effectively.
 
+
 ## CLI Options
 
 Puppeteer UI TestKit provides several command-line interface (CLI) options to customize the test execution. Here's an explanation of each CLI option:
 
-| Flag             | Description |
-| ---------------- | ----------- | 
-| `-u`, `--update` |             | This option allows you to update the saved snapshots with newly captured screenshots. When this option is specified, Puppeteer UI TestKit will update the snapshots instead of performing a comparison.                                                         |
-| `-r`,`--remove`  |             | With this option, you can remove any unused snapshots. Unused snapshots refer to the ones that are no longer associated with any tests in the test configuration file.                                                                                          |
-| `--headless`     |             | (boolean): This option specifies whether to run the browser in headless mode. By default, it is set to `true`, meaning the browser will run in headless mode. You can set it to `false` if you want to run the browser with a visible UI.                       |
-| `-p`, `--port`   |             | (number): This option allows you to specify the port on which the test server should run. It is used when you pass a static path to start the server. The default port is `3002`, but you can provide a different port number.                                  |
-| --statics        |             | (string): Use this option to specify the path to the static files that should be served by the test server. Puppeteer UI TestKit will serve these static files during the test execution.                                                                       |
-| --folder         |             | (string): This option sets the folder containing the UI testkit config files. By default, it is set to the current directory (`.`), but you can provide a different folder path if your configuration files are located elsewhere.                              |
-| --file           |             | (string): With this option, you can specify a file pattern to run. Puppeteer UI TestKit will only execute the test files that match the provided file pattern.                                                                                                  |
-| --threshold      |             | (number): This option allows you to set the threshold for passing visual tests. The threshold represents the maximum allowed difference between snapshots. The default threshold is `0.01`, but you can adjust it based on your desired comparison sensitivity. |
+| Flag | Description |
+| ------ | ------ |
+|`-u`, `--update`||This option allows you to update the saved snapshots with newly captured screenshots. When this option is specified, Puppeteer UI TestKit will update the snapshots instead of performing a comparison.|
+|`-r`,`--remove`||With this option, you can remove any unused snapshots. Unused snapshots refer to the ones that are no longer associated with any tests in the test configuration file.|
+|`--headless`||(boolean): This option specifies whether to run the browser in headless mode. By default, it is set to `true`, meaning the browser will run in headless mode. You can set it to `false` if you want to run the browser with a visible UI.|
+|`-p`, `--port`||(number): This option allows you to specify the port on which the test server should run. It is used when you pass a static path to start the server. The default port is `3002`, but you can provide a different port number.|
+|--statics||(string): Use this option to specify the path to the static files that should be served by the test server. Puppeteer UI TestKit will serve these static files during the test execution.|
+|--folder||(string): This option sets the folder containing the UI testkit config files. By default, it is set to the current directory (`.`), but you can provide a different folder path if your configuration files are located elsewhere.|
+|--file||(string): With this option, you can specify a file pattern to run. Puppeteer UI TestKit will only execute the test files that match the provided file pattern.|
+|--threshold||(number): This option allows you to set the threshold for passing visual tests. The threshold represents the maximum allowed difference between snapshots. The default threshold is `0.01`, but you can adjust it based on your desired comparison sensitivity.|
 
 You can use these CLI options to fine-tune your test execution, customize the test server, specify file patterns, and configure other test parameters according to your specific testing requirements.
 
