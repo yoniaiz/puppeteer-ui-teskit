@@ -18,7 +18,7 @@
         type:'visual',
         description: 'Visual test 1',
         config:{
-          threshold: 0.01,
+          threshold: 0.005,
           screenHeight: 1024,
           screenWidth: 1080,
           x: 0,

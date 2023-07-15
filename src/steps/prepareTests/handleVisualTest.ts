@@ -51,7 +51,7 @@ export const handleVisualTest = async (
       snapshotBuffer,
       saveTo: snapshotFile.path,
       description: snapTest.description,
-      threshold: snapTest.config?.threshold || 0.01,
+      threshold: snapTest.config?.threshold || 0.005,
     },
     failed: !snapshotBuffer,
   };

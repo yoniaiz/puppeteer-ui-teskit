@@ -5,7 +5,7 @@ const defaultOptions: CliOptions = {
   file: '',
   baseURL: '',
   statics: '',
-  threshold: 0.01,
+  threshold: 0.005,
   headless: true,
   port: 3000,
 };
