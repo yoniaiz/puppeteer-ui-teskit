@@ -86,7 +86,7 @@ const config: TestkitConfigFile = {
 ```json
 {
   "scripts": {
-    "test:ui-testkit": "puppeteer-ui-testkit"
+    "test:visual": "puppeteer-ui-testkit"
   }
 }
 ```
