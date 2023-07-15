@@ -1,7 +1,8 @@
 {
   "name": "puppeteer-ui-testkit",
   "version": "1.0.0",
-  "description": "",
+  "homepage": "https://github.com/yoniaiz/puppeteer-ui-teskit",
+  "description": "Puppeteer UI TestKit is an open-source npm package that simplifies UI testing for visual regression and accessibility using Puppeteer and axe-core. It provides an intuitive toolkit for automating UI tests, capturing screenshots, and performing accessibility checks.",
   "main": "dist/index.js",
   "bin": "bin/index.js",
   "types": "build/types/Testkit.types.d.ts",
@@ -10,6 +11,13 @@
     "build",
     "bin"
   ],
+  "bugs": {
+    "url": "https://github.com/yoniaiz/puppeteer-ui-teskit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yoniaiz/puppeteer-ui-teskit"
+  },
   "scripts": {
     "start": "node bin/index.js --statics sandbox/public --port 3000",
     "clean": "rimraf build tmp",
@@ -33,7 +41,23 @@
   "volta": {
     "node": "20.3.0"
   },
-  "keywords": [],
+  "keywords": [
+    "testing",
+    "ui",
+    "puppeteer",
+    "visual",
+    "regression",
+    "accessibility",
+    "axe-core",
+    "axe",
+    "testkit",
+    "test",
+    "visual-regression",
+    "visual-regression-testing",
+    "e2e",
+    "e2e-testing",
+    "testing-tools"
+  ],
   "author": "Yonatan Aizenshtein <https://github.com/yoniaiz>",
   "devDependencies": {
     "@babel/preset-env": "^7.22.5",
