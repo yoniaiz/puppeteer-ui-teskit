@@ -43,7 +43,7 @@ const screenshotWorker = async ({
   shouldUpdate,
   isCI = false,
   screenshot,
-  threshold = 0.01,
+  threshold = 0.005,
 }: {
   shouldUpdate: boolean;
   screenshot: Screenshot;

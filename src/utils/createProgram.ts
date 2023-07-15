@@ -41,7 +41,7 @@ const createProgram = (): {
       '--threshold <number>',
       'threshold to pass test',
       (val) => parseInt(val, 10),
-      0.01,
+      0.005,
     )
     .parse(process.argv);
 
@@ -57,7 +57,7 @@ const createProgram = (): {
       folder: options.folder || process.cwd(),
       file: options.file,
       baseURL: options.baseURL,
-      threshold: options.threshold || 0.01,
+      threshold: options.threshold || 0.005,
     },
     isCI: ci.isCI,
   };

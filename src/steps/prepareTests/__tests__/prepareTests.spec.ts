@@ -61,7 +61,7 @@ describe('prepareTests', () => {
           snapshotBuffer: mockSnapshotBuffer,
           saveTo: snapshotFile.path,
           description: _test.description,
-          threshold: 0.01,
+          threshold: 0.005,
         });
         expect(logger.log).toHaveBeenNthCalledWith(
           i + 1,
@@ -193,7 +193,7 @@ describe('prepareTests', () => {
       {
         name: mockSnapshotFiles[1].name,
         snapshotBuffer: Buffer.from(''),
-        threshold: 0.01,
+        threshold: 0.005,
         description: mockSnapshotFiles[1].tests[0].description,
         saveTo: mockSnapshotFiles[1].path,
       },
@@ -280,7 +280,7 @@ describe('prepareTests', () => {
       {
         name: mockSnapshotFiles[1].name,
         snapshotBuffer: Buffer.from(''),
-        threshold: 0.01,
+        threshold: 0.005,
         description: mockSnapshotFiles[1].tests[0].description,
         saveTo: mockSnapshotFiles[1].path,
       },

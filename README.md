@@ -164,7 +164,7 @@ Puppeteer UI TestKit provides several command-line interface (CLI) options to cu
 |--statics|(string): Use this option to specify the path to the static files that should be served by the test server. Puppeteer UI TestKit will serve these static files during the test execution.
 |--folder|(string): This option sets the folder containing the UI testkit config files. By default, it is set to the projects root (`process.cwd()`), but you can provide a different folder path if your configuration files are located elsewhere.
 |--file|(string): With this option, you can specify a file pattern to run. Puppeteer UI TestKit will only execute the test files that match the provided file pattern.
-|--threshold|(number): This option allows you to set the threshold for passing visual tests. The threshold represents the maximum allowed difference between snapshots. The default threshold is `0.01`, but you can adjust it based on your desired comparison sensitivity.
+|--threshold|(number): This option allows you to set the threshold for passing visual tests. The threshold represents the maximum allowed difference between snapshots. The default threshold is `0.005`, but you can adjust it based on your desired comparison sensitivity.
 
 You can use these CLI options to fine-tune your test execution, customize the test server, specify file patterns, and configure other test parameters according to your specific testing requirements.
 

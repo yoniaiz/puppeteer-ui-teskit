@@ -8,7 +8,7 @@ export async function compareImages({
   name,
   saveTo,
   snapshotBuffer,
-  threshold = 0.01,
+  threshold = 0.005,
   description,
 }: Screenshot) {
   const snapFilePath = buildSnapFilePath(saveTo, name, description);
