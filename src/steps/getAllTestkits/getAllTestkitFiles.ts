@@ -5,7 +5,7 @@ import { logger } from '../../utils/logger.js';
 import { logs } from './constants.js';
 
 export const getAllTestkitFiles = (): string[] => {
-  const folderPath = `${program.options.folder || '.'}/**/`;
+  const folderPath = `${program.options.folder}/**/`;
   const fileName = program.options.file ? `*${program.options.file}*` : '*';
   const fileTypes = `{${TESTKIT_FILE_EXTENSIONS.join(',')}}`;
 

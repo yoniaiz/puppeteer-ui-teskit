@@ -1,7 +1,7 @@
 import { CliOptions, program } from '../utils/createProgram';
 
 const defaultOptions: CliOptions = {
-  folder: '.',
+  folder: process.cwd(),
   file: '',
   baseURL: '',
   statics: '',

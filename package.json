@@ -6,6 +6,10 @@
   "bin": "bin/index.js",
   "types": "build/types/Testkit.types.d.ts",
   "type": "module",
+  "files": [
+    "build",
+    "bin"
+  ],
   "scripts": {
     "start": "node bin/index.js --statics sandbox/public --port 3000",
     "clean": "rimraf build tmp",
