@@ -18,6 +18,7 @@
     "type": "git",
     "url": "https://github.com/yoniaiz/puppeteer-ui-teskit"
   },
+  "license": "MIT",
   "scripts": {
     "start": "node bin/index.js --statics sandbox/public --port 3000",
     "clean": "rimraf build tmp",
