@@ -1,6 +1,6 @@
 {
   "name": "puppeteer-ui-testkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/yoniaiz/puppeteer-ui-teskit",
   "description": "Puppeteer UI TestKit is an open-source npm package that simplifies UI testing for visual regression and accessibility using Puppeteer and axe-core. It provides an intuitive toolkit for automating UI tests, capturing screenshots, and performing accessibility checks.",
   "main": "dist/index.js",
