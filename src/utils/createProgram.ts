@@ -30,7 +30,11 @@ const createProgram = (): {
       3002,
     )
     .option('--statics <string>', 'path to static files to serve from server')
-    .option('--folder <string>', 'folder contains ui-testkit config files', '.')
+    .option(
+      '--folder <string>',
+      'folder contains ui-testkit config files',
+      process.cwd(),
+    )
     .option('--file <string>', 'file patten to run')
     .option('--baseURL <string>', 'base url to run against')
     .option(
@@ -50,7 +54,7 @@ const createProgram = (): {
       headless: options.headless || true,
       port: options.port || 3000,
       statics: options.statics,
-      folder: options.folder || '.',
+      folder: options.folder || process.cwd(),
       file: options.file,
       baseURL: options.baseURL,
       threshold: options.threshold || 0.01,

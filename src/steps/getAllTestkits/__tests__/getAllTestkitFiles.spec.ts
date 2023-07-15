@@ -27,7 +27,7 @@ describe('findAllSnapFiles', () => {
     const result = setup({ mockFilePaths });
 
     expect(glob.sync).toHaveBeenCalledWith(
-      './**/*{.ui-testkit.js,.ui-testkit.ts}',
+      `${process.cwd()}/**/*{.ui-testkit.js,.ui-testkit.ts}`,
     );
     expect(result).toEqual(mockFilePaths);
   });
@@ -42,7 +42,7 @@ describe('findAllSnapFiles', () => {
     });
 
     expect(glob.sync).toHaveBeenCalledWith(
-      './**/*file1*{.ui-testkit.js,.ui-testkit.ts}',
+      `${process.cwd()}/**/*file1*{.ui-testkit.js,.ui-testkit.ts}`,
     );
 
     resetProgramOptions();
@@ -54,7 +54,7 @@ describe('findAllSnapFiles', () => {
     });
 
     expect(glob.sync).toHaveBeenCalledWith(
-      './**/*{.ui-testkit.js,.ui-testkit.ts}',
+      `${process.cwd()}/**/*{.ui-testkit.js,.ui-testkit.ts}`,
     );
     expect(result).toEqual([]);
     expect(logger.warn).toHaveBeenCalledTimes(1);

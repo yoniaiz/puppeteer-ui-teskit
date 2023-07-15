@@ -162,7 +162,7 @@ Puppeteer UI TestKit provides several command-line interface (CLI) options to cu
 |`--headless`|(boolean): This option specifies whether to run the browser in headless mode. By default, it is set to `true`, meaning the browser will run in headless mode. You can set it to `false` if you want to run the browser with a visible UI.
 |`-p`, `--port`|(number): This option allows you to specify the port on which the test server should run. It is used when you pass a static path to start the server. The default port is `3002`, but you can provide a different port number.
 |--statics|(string): Use this option to specify the path to the static files that should be served by the test server. Puppeteer UI TestKit will serve these static files during the test execution.
-|--folder|(string): This option sets the folder containing the UI testkit config files. By default, it is set to the current directory (`.`), but you can provide a different folder path if your configuration files are located elsewhere.
+|--folder|(string): This option sets the folder containing the UI testkit config files. By default, it is set to the projects root (`process.cwd()`), but you can provide a different folder path if your configuration files are located elsewhere.
 |--file|(string): With this option, you can specify a file pattern to run. Puppeteer UI TestKit will only execute the test files that match the provided file pattern.
 |--threshold|(number): This option allows you to set the threshold for passing visual tests. The threshold represents the maximum allowed difference between snapshots. The default threshold is `0.01`, but you can adjust it based on your desired comparison sensitivity.
 

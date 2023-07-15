@@ -1,4 +1,6 @@
 export const program = {
-  options: {},
+  options: {
+    folder: process.cwd(),
+  },
   isCI: false,
 };
