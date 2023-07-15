@@ -129,6 +129,9 @@ The tests array includes two types of tests: AxeTest for accessibility testing a
 | ------ | ------ |
 |type|(string): The type of the test, which should be set to 'axe' for accessibility testing.|
 |description|(string): The description of the test. It provides a brief explanation of what the test is checking.
+|beforeTest|((page: Puppeteer.Page) => Promise<void>): A function that runs before the test. It allows you to perform any actions before the test is executed. For example, you can wait for a specific element to load before running the accessibility checks.
+|afterTest|((page: Puppeteer.Page) => Promise<void>): A function that runs after the test. It allows you to perform any actions after the test is executed. For example, you can reset the page state after running the accessibility checks.
+|resetAfterTest|(boolean): Specifies whether to reset the page state after running the accessibility checks. If set to true, the page will be reset after the test is executed.
 |selector|(string): The selector of the element on which to run axe-core for accessibility testing. It allows you to focus the accessibility checks on specific elements or areas of the page.
 |config|(object, optional): Additional configuration options for axe-core.
 | config/disableRules | (array of strings): An array of rule IDs to disable during accessibility testing. You can specify specific rule IDs that you want to skip.
@@ -139,6 +142,9 @@ The tests array includes two types of tests: AxeTest for accessibility testing a
 | ------ | ------ |
 |type|(string): The type of the test, which should be set to 'visual' for visual regression testing
 |description|(string): The description of the test. It provides a brief explanation of what the test is checking.
+|beforeTest|((page: Puppeteer.Page) => Promise<void>): A function that runs before the test. It allows you to perform any actions before the test is executed. For example, you can wait for a specific element to load before running the accessibility checks.
+|afterTest|((page: Puppeteer.Page) => Promise<void>): A function that runs after the test. It allows you to perform any actions after the test is executed. For example, you can reset the page state after running the accessibility checks.
+|resetAfterTest|(boolean): Specifies whether to reset the page state after running the accessibility checks. If set to true, the page will be reset after the test is executed.
 |config| (object, optional): Additional configuration options for screenshot capture and comparison
 | config/threshold | (number): The threshold for visual difference comparison. It represents the maximum allowed difference between two screenshots. Smaller values indicate stricter comparison criteria
 |config/screenWidth|(number): The width of the screenshot to capture. By default, it captures the full page width.
